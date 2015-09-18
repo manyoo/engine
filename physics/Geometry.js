@@ -30,8 +30,8 @@ var Mat33 = require('../math/Mat33');
 var ObjectManager = require('../utilities/ObjectManager');
 ObjectManager.register('DynamicGeometry', DynamicGeometry);
 ObjectManager.register('DynamicGeometryFeature', DynamicGeometryFeature);
-var oMRequestDynamicGeometryFeature = ObjectManager.requestDynamicGeometryFeature;
-var oMFreeDynamicGeometryFeature = ObjectManager.freeDynamicGeometryFeature;
+var oMRequestDynamicGeometryFeature = ObjectManager['requestDynamicGeometryFeature'];
+var oMFreeDynamicGeometryFeature = ObjectManager['freeDynamicGeometryFeature'];
 
 var TRIPLE_REGISTER = new Vec3();
 

@@ -36,7 +36,7 @@ var ContactManifoldTable = require('./collision/ContactManifold');
 
 var ObjectManager = require('../../utilities/ObjectManager');
 ObjectManager.register('CollisionData', CollisionData);
-var oMRequestCollisionData = ObjectManager.requestCollisionData;
+var oMRequestCollisionData = ObjectManager['requestCollisionData'];
 
 var VEC_REGISTER = new Vec3();
 

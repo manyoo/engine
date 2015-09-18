@@ -29,10 +29,10 @@ var ObjectManager = require('../../../utilities/ObjectManager');
 
 ObjectManager.register('Manifold', Manifold);
 ObjectManager.register('Contact', Contact);
-var oMRequestManifold = ObjectManager.requestManifold;
-var oMRequestContact = ObjectManager.requestContact;
-var oMFreeManifold = ObjectManager.freeManifold;
-var oMFreeContact = ObjectManager.freeContact;
+var oMRequestManifold = ObjectManager['requestManifold'];
+var oMRequestContact = ObjectManager['requestContact'];
+var oMFreeManifold = ObjectManager['freeManifold'];
+var oMFreeContact = ObjectManager['freeContact'];
 
 /**
  * Helper function to clamp a value to a given range.
@@ -288,7 +288,8 @@ Manifold.prototype.removeContact = function removeContact(contact, index) {
     this.contacts[index] = null;
     this.numContacts--;
 
-    ObjectManager.freeCollisionData(contact.data);
+    var func = ObjectManager['freeCollisionData'];
+    func(contact.data);
     contact.data = null;
     oMFreeContact(contact);
 };

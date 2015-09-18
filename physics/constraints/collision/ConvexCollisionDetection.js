@@ -28,11 +28,11 @@ var Vec3 = require('../../../math/Vec3');
 var ObjectManager = require('../../../utilities/ObjectManager');
 
 ObjectManager.register('GJK_EPASupportPoint', GJK_EPASupportPoint);
-var oMRequestGJK_EPASupportPoint = ObjectManager.requestGJK_EPASupportPoint;
-var oMRequestDynamicGeometry = ObjectManager.requestDynamicGeometry;
-var oMFreeGJK_EPASupportPoint = ObjectManager.freeGJK_EPASupportPoint;
-var oMFreeDynamicGeometry = ObjectManager.freeDynamicGeometry;
-var oMFreeDynamicGeometryFeature = ObjectManager.freeDynamicGeometryFeature;
+var oMRequestGJK_EPASupportPoint = ObjectManager['requestGJK_EPASupportPoint'];
+var oMRequestDynamicGeometry = ObjectManager['requestDynamicGeometry'];
+var oMFreeGJK_EPASupportPoint = ObjectManager['freeGJK_EPASupportPoint'];
+var oMFreeDynamicGeometry = ObjectManager['freeDynamicGeometry'];
+var oMFreeDynamicGeometryFeature = ObjectManager['freeDynamicGeometryFeature'];
 
 var P_REGISTER = new Vec3();
 var V0_REGISTER = new Vec3();
@@ -210,7 +210,8 @@ function epa(body1, body2, polytope) {
             freeGJK_EPADynamicGeometry(polytope);
             oMFreeGJK_EPASupportPoint(point);
 
-            return ObjectManager.requestCollisionData().reset(closest.distance, direction, body1Contact, body2Contact, localBody1Contact, localBody2Contact);
+            var func = ObjectManager['requestCollisionData'];
+            return func().reset(closest.distance, direction, body1Contact, body2Contact, localBody1Contact, localBody2Contact);
         }
         else {
             polytope.addVertex(point);
